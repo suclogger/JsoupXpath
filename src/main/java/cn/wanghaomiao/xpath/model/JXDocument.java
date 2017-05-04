@@ -6,6 +6,7 @@ import cn.wanghaomiao.xpath.exception.NoSuchFunctionException;
 import cn.wanghaomiao.xpath.exception.XpathSyntaxErrorException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import java.util.List;
@@ -25,7 +26,12 @@ public class JXDocument {
     public JXDocument(Elements els){
         elements = els;
     }
-    
+
+    public JXDocument(String xml, Parser parser){
+        Document doc = Jsoup.parse(xml, "", Parser.xmlParser());
+        elements = doc.children();
+    }
+
     public List<Object> sel(String xpath) throws NoSuchAxisException, NoSuchFunctionException, XpathSyntaxErrorException {
         List<Object> res = null;
         try {
