@@ -28,8 +28,7 @@ public class JXDocument {
     }
 
     public JXDocument(String xml, Parser parser){
-        Document doc = Jsoup.parse(xml, "", parser);
-        elements = doc.children();
+        elements = Jsoup.parse(xml, "", parser).children();
     }
 
     public List<Object> sel(String xpath) throws NoSuchAxisException, NoSuchFunctionException, XpathSyntaxErrorException {
