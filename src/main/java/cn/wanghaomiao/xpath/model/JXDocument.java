@@ -28,7 +28,7 @@ public class JXDocument {
     }
 
     public JXDocument(String xml, Parser parser){
-        Document doc = Jsoup.parse(xml, "", Parser.xmlParser());
+        Document doc = Jsoup.parse(xml, "", parser);
         elements = doc.children();
     }
 
